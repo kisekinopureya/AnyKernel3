@@ -49,6 +49,15 @@ bb=/tmp/anykernel/tools/busybox;
 chmod 755 $bb;
 $bb chmod -R 755 /tmp/anykernel/tools /tmp/anykernel/bin;
 
+ui_print "ooooo";
+ui_print "'888'";
+ui_print " 888          .ooooo.  oooo  oooo  oo.ooooo.";
+ui_print " 888         d88' '88b '888  '888   888' '88b";
+ui_print " 888         888   888  888   888   888   888";
+ui_print " 888       o 888   888  888   888   888   888";
+ui_print "o888ooooood8 'Y8bod8P'  'V88V'V8P'  888bod8P'";
+ui_print "                                    888";
+ui_print "                                   o888o";
 ui_print "$(file_getprop /tmp/anykernel/anykernel.sh kernel.string)";
 ui_print " ";
 ui_print "AnyKernel2 by osm0sis @ xda-developers";

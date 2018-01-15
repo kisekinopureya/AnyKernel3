@@ -16,7 +16,7 @@ find . -type f -name "wlan.ko" -exec cp -fv {} $LOUP_WORKING_DIR/AnyKernel2/modu
 
 # Update kernel version
 cp $LOUP_WORKING_DIR/AnyKernel2/anykernel-template.sh $LOUP_WORKING_DIR/AnyKernel2/anykernel.sh
-sed -i -e "s/LOUP_VERSION/$LOUP_VERSION/g"$LOUP_WORKING_DIR/AnyKernel2/anykernel.sh
+sed -i -e "s/LOUP_VERSION/$LOUP_VERSION/g" $LOUP_WORKING_DIR/AnyKernel2/anykernel.sh
 sed -i -e "s/ANDROID_VERSION/$ANDROID_VERSION/g" $LOUP_WORKING_DIR/AnyKernel2/anykernel.sh
 
 # Zip it!.

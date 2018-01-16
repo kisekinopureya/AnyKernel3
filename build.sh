@@ -27,4 +27,4 @@ popd
 # Print final result in color!
 GREEN='\033[0;32m'
 echo ""
-echo -e "${GREEN}> Succeed!, file located at $(readlink -f $FILE_NAME)"
+echo -e "${GREEN}> Succeed!, file located at $LOUP_WORKING_DIR/AnyKernel2/$FILE_NAME"

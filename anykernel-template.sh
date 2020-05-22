@@ -1,12 +1,13 @@
-# AnyKernel2 Ramdisk Mod Script
+# AnyKernel3 Ramdisk Mod Script
 # osm0sis @ xda-developers
 
 ## AnyKernel setup
 # begin properties
-properties() {
-kernel.string=Kernel by bitrvmpd @ github    vLOUP_VERSION-ANDROID_VERSION
+properties() { '
+kernel.string=Loup Kernel by bitrvmpd @ github	vLOUP_VERSION-ANDROID_VERSION
 do.devicecheck=1
 do.modules=1
+do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
 device.name1=santoni
@@ -14,7 +15,9 @@ device.name2=
 device.name3=
 device.name4=
 device.name5=
-} # end properties
+supported.versions=
+supported.patchlevels=
+'; } # end properties
 
 # shell variables
 block=/dev/block/bootdevice/by-name/boot;
@@ -24,13 +27,13 @@ ramdisk_compression=auto;
 
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
-. /tmp/anykernel/tools/ak2-core.sh;
+. tools/ak3-core.sh;
 
 
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
-chmod -R 750 $ramdisk/*;
-chown -R root:root $ramdisk/*;
+set_perm_recursive 0 0 755 644 $ramdisk/*;
+set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 
 
 ## AnyKernel install
@@ -38,15 +41,14 @@ dump_boot;
 
 # begin ramdisk changes
 
-# init.qcom.rc
-#backup_file init.qcom.rc;
-#replace_line init.qcom.rc "setprop persist.sys.fp.vendor none" "setprop persist.sys.fp.vendor goodix";
-#append_file init.rc "run-parts" init;
+# init.rc
+#backup_file init.rc;
+#replace_string init.rc "cpuctl cpu,timer_slack" "mount cgroup none /dev/cpuctl cpu" "mount cgroup none /dev/cpuctl cpu,timer_slack";
 
 # init.tuna.rc
 #backup_file init.tuna.rc;
 #insert_line init.tuna.rc "nodiratime barrier=0" after "mount_all /fstab.tuna" "\tmount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/userdata /data remount nosuid nodev noatime nodiratime barrier=0";
-#append_file init.tuna.rc "dvbootscript" init.tuna;
+#append_file init.tuna.rc "bootscript" init.tuna;
 
 # fstab.tuna
 #backup_file fstab.tuna;
@@ -58,6 +60,5 @@ dump_boot;
 # end ramdisk changes
 
 write_boot;
-
 ## end install
 

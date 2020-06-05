@@ -11,7 +11,7 @@ if [ -f $LOUP_WORKING_DIR/AnyKernel3/modules/system/lib/modules/wlan.ko ]; then
 fi
 
 # Start building anykernel zip.
-cp ./arch/arm64/boot/Image.gz-dtb $LOUP_WORKING_DIR/AnyKernel3/zImage
+cp ./out/arch/arm64/boot/Image.gz-dtb $LOUP_WORKING_DIR/AnyKernel3/zImage
 find . -type f -name "wlan.ko" -exec cp -fv {} $LOUP_WORKING_DIR/AnyKernel3/modules/system/lib/modules/. \;
 
 # Update kernel version

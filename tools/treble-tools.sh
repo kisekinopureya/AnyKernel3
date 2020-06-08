@@ -1,4 +1,3 @@
-### okami methods
 treble_patch(){
   ## Check if the installed rom has treble enabled.
   treble=false
@@ -9,15 +8,15 @@ treble_patch(){
       break;
     fi
   done
-
-  ui_print "Patching zImage for [${device}]...";
+  ui_print " ";
+  ui_print " ";
   if [ "$treble" == "true" ]; then
-          ui_print "==========[ TREBLE ]===========";
+	  ui_print "Appending Treble DTB...";
           cat zImage ${device}-treble > zImage_2;
   else
-          ui_print "========[ NON TREBLE ]=========";
+          ui_print "Appending Non Treble DTB...";
           cat zImage ${device} > zImage_2;
   fi;
 
-  mv zImage_2 zImage
+  mv zImage_2 zImage;
 }

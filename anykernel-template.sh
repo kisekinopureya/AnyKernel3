@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Loup Kernel by bitrvmpd @ github	vLOUP_VERSION-ANDROID_VERSION
+kernel.string=KERNEL_NAME Kernel by bitrvmpd @ github vLOUP_VERSION-ANDROID_VERSION
 do.devicecheck=1
 do.modules=1
 do.systemless=1
@@ -28,6 +28,8 @@ ramdisk_compression=auto;
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
 . tools/ak3-core.sh;
+# Treble patch import
+. tools/treble-tools.sh;
 
 
 ## AnyKernel file attributes
@@ -35,6 +37,8 @@ ramdisk_compression=auto;
 set_perm_recursive 0 0 755 644 $ramdisk/*;
 set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 
+# Invoke treble patch
+treble_patch;
 
 ## AnyKernel install
 dump_boot;

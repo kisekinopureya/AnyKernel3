@@ -13,8 +13,14 @@ fi
 
 # Start building anykernel zip, without any dtb. Will append at runtime :P
 cp ./out/arch/arm64/boot/Image.gz $LOUP_WORKING_DIR/AnyKernel3/zImage
+cp ./arch/arm64/boot/Image.gz $LOUP_WORKING_DIR/AnyKernel3/zImage
+
 cp ./out/arch/arm64/boot/dts/qcom/santoni-treble.dtb $LOUP_WORKING_DIR/AnyKernel3/santoni-treble
+cp ./arch/arm64/boot/dts/qcom/msm8940-pmi8950-qrd-sku7_S88536AA2-treble.dtb $LOUP_WORKING_DIR/AnyKernel3/santoni-treble
+
 cp ./out/arch/arm64/boot/dts/qcom/santoni.dtb $LOUP_WORKING_DIR/AnyKernel3/santoni
+cp ./arch/arm64/boot/dts/qcom/msm8940-pmi8950-qrd-sku7_S88536AA2.dtb $LOUP_WORKING_DIR/AnyKernel3/santoni
+
 find . -type f -name "wlan.ko" -exec cp -fv {} $LOUP_WORKING_DIR/AnyKernel3/modules/system/lib/modules/. \;
 
 # Update kernel version

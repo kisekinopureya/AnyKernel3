@@ -30,6 +30,8 @@ ramdisk_compression=auto;
 . tools/ak3-core.sh;
 # Treble patch import
 . tools/treble-tools.sh;
+# Key fix import;
+. tools/key-fix.sh;
 
 
 ## AnyKernel file attributes
@@ -39,6 +41,8 @@ set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 
 # Invoke treble patch
 treble_patch;
+# Invoke key fix;
+key_patch;
 
 ## AnyKernel install
 dump_boot;
